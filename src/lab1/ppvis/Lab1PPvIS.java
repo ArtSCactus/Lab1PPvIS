@@ -100,6 +100,10 @@ button.setText("Add this to combobox");
 button1.setText("push to set text to button2");
  final Button button2 = new Button(shell, SWT.NONE);
  button2.setText("button2");
+  RowData button2size = new RowData();
+ button2size.width= 50;
+ button2.setLayoutData(layoutData);
+ 
  
   
         button1.addSelectionListener(new SelectionAdapter() {
@@ -112,8 +116,9 @@ button1.setText("push to set text to button2");
         button2.addSelectionListener(new SelectionAdapter() {
              @Override
             public void widgetSelected(SelectionEvent arg0) {
+            String buffer = button1.getText();
             button1.setText(button2.getText());
-            button2.setText(button1.getText());
+            button2.setText(buffer);
             }
         });
  
