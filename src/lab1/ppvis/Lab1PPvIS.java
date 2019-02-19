@@ -184,6 +184,37 @@ button1.setText("push to set text to button2");
             }
              
         });
+        
+        //Task 4
+        final Button button4 = new Button(shell, SWT.NONE);
+button4.setText("Choose from combobox");
+ button4.addSelectionListener(new SelectionAdapter() {
+ 
+            @Override
+            public void widgetSelected(SelectionEvent arg0) {
+                String[] items = combo.getItems();
+                String s = text.getText();
+                 if (s == null || s.length()==0){
+                     return;
+                 }
+                 int count=0;
+                 boolean exist =false;
+               for (String item : items){
+         if (item.equals(text.getText())){
+             exist =true;
+             break;
+         }
+         else count++;
+        }
+              if (exist==false) {
+           MessageBox mb = new MessageBox(shell, SWT.ICON_ERROR | SWT.OK);
+           mb.setText("Error");
+           mb.setMessage("Such element does not exist!");
+         mb.open();
+              }
+              else combo.select(count);
+                 }
+        });
  
         shell.setSize(350, 200);
         shell.open();
