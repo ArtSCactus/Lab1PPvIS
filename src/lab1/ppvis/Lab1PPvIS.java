@@ -4,14 +4,13 @@
  * and open the template in the editor.
  */
 package lab1.ppvis;
-import static java.awt.SystemColor.text;
 import org.eclipse.swt.SWT;
 import org.eclipse.swt.events.SelectionAdapter;
 import org.eclipse.swt.events.SelectionEvent;
-import org.eclipse.swt.layout.RowData;
 import org.eclipse.swt.layout.RowLayout;
 import org.eclipse.swt.widgets.Button;
 import org.eclipse.swt.widgets.Combo;
+import org.eclipse.swt.widgets.Composite;
 import org.eclipse.swt.widgets.Display;
 import org.eclipse.swt.widgets.Label;
 import org.eclipse.swt.widgets.MessageBox;
@@ -31,34 +30,30 @@ public class Lab1PPvIS {
         // TODO code application logic here 
         Display display = new Display();
         Shell shell = new Shell(display);
- 
-        RowLayout rowLayout = new RowLayout();
-        rowLayout.marginLeft = 30;
-        rowLayout.marginTop = 30;
-        shell.setLayout(rowLayout);
+        RowLayout rowLayout = new RowLayout(SWT.HORIZONTAL);
+    rowLayout.marginLeft = 10;
+       rowLayout.marginTop = 15;
+       rowLayout.marginRight = 15;
+       rowLayout.marginBottom = 25;
+       rowLayout.spacing = 5;
+      
+       shell.setLayout(rowLayout);
         
-        
+        Combo combo = new Combo (shell, SWT.DROP_DOWN);
         //task 1
         Text text = new Text(shell, SWT.BORDER);
-        RowData layoutData = new RowData();
-        layoutData.width= 150;
-        text.setLayoutData(layoutData);
         text.setText("");
         //Lebel
         final Label label = new Label(shell, SWT.NONE);
         label.setText("");
-       
-        // Button 1
+     
+      // Button 1
 final Button button = new Button(shell, SWT.NONE);
-button.setText("Add this to combobox");
-
+button.setText("Add to combobox");
        
         MessageBox mb = new MessageBox(shell, SWT.ICON_ERROR | SWT.OK);
            mb.setText("Error");
            mb.setMessage("Already exists");
-           
-           
-        Combo combo = new Combo (shell, SWT.DROP_DOWN);
         
 
   button.addSelectionListener(new SelectionAdapter() {
@@ -86,23 +81,11 @@ button.setText("Add this to combobox");
                  }
         });
   
- /* shell.addShellListener(new ShellAdapter() {
-        public void shellClosed(ShellEvent e) {
-            MessageBox mb = new MessageBox(shell, SWT.ICON_QUESTION | SWT.OK | SWT.CANCEL);
-            mb.setText("Confirm Exit");
-            mb.setMessage("Are you sure you want to exit?");
-            int rc = mb.open();
-            e.doit = rc == SWT.OK;
-        }
-});*/
  //task 2
  final Button button1 = new Button(shell, SWT.NONE);
 button1.setText("push to set text to button2");
  final Button button2 = new Button(shell, SWT.NONE);
  button2.setText("button2");
-  RowData button2size = new RowData();
- button2size.width= 50;
- button2.setLayoutData(layoutData);
  
  
   
@@ -121,8 +104,88 @@ button1.setText("push to set text to button2");
             button2.setText(buffer);
             }
         });
+        
+        //task3
+        // Group
+        Composite radioGroup = new Composite (shell, SWT.NONE);
+        radioGroup.setLayout(new RowLayout(SWT.HORIZONTAL));
  
-        shell.setSize(400, 200);
+        Label radiolabel = new Label(radioGroup, SWT.NONE);
+        radiolabel.setText("Select button: ");
+ 
+        // Radio - 1
+        Button Rbutton1 = new Button(radioGroup, SWT.RADIO);
+        Rbutton1.setText("1");
+ 
+        // Radio - 2
+        Button Rbutton2 = new Button(radioGroup, SWT.RADIO);
+        Rbutton2.setText("2");
+        
+        // Radio - 3
+        Button Rbutton3 = new Button(radioGroup, SWT.RADIO);
+        Rbutton3.setText("3");
+        
+        final Button button3 = new Button (shell, SWT.NONE);
+        button3.setText("Choose RadioButton");
+        
+        Rbutton1.addSelectionListener(new SelectionAdapter()  {
+ 
+            @Override
+            public void widgetSelected(SelectionEvent e) {
+                Button source=  (Button) e.getSource();
+                 
+                if(source.getSelection())  {
+                    
+                }
+            }
+             
+        });
+        button3.addSelectionListener(new SelectionAdapter() {
+             @Override
+            public void widgetSelected(SelectionEvent arg0) {
+                String choice = text.getText();
+                MessageBox ErrorMs = new MessageBox(shell, SWT.ICON_ERROR | SWT.OK);
+           ErrorMs.setText("Error");
+           ErrorMs.setMessage("No such element!");
+         
+                if (choice.equals("1")) {
+            Rbutton1.setSelection(true);
+            Rbutton2.setSelection(false);
+            Rbutton3.setSelection(false);
+                }
+                else {
+                    if (choice.equals("2"))
+                    {
+                    Rbutton1.setSelection(false);
+                    Rbutton2.setSelection(true);
+                    Rbutton3.setSelection(false);
+                    }
+                    else{
+                        if (choice.equals("3")){
+                    Rbutton1.setSelection(false);
+                    Rbutton2.setSelection(false);
+                    Rbutton3.setSelection(true);
+                        }
+                        else ErrorMs.open();
+                    }
+                }
+            }
+        });
+         
+        Rbutton2.addSelectionListener(new SelectionAdapter()  {
+ 
+            @Override
+            public void widgetSelected(SelectionEvent e) {
+                Button source=  (Button) e.getSource();
+                 
+                if(source.getSelection())  {
+                   
+                }
+            }
+             
+        });
+ 
+        shell.setSize(350, 200);
         shell.open();
         while (!shell.isDisposed()) {
             if (!display.readAndDispatch())
