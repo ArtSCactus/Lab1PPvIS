@@ -15,6 +15,8 @@ import org.eclipse.swt.widgets.Display;
 import org.eclipse.swt.widgets.Label;
 import org.eclipse.swt.widgets.MessageBox;
 import org.eclipse.swt.widgets.Shell;
+import org.eclipse.swt.widgets.Table;
+import org.eclipse.swt.widgets.TableColumn;
 import org.eclipse.swt.widgets.Text;
 
 /**
@@ -30,82 +32,28 @@ public class Lab1PPvIS {
         // TODO code application logic here 
         Display display = new Display();
         Shell shell = new Shell(display);
-        RowLayout rowLayout = new RowLayout(SWT.HORIZONTAL);
-    rowLayout.marginLeft = 10;
+         RowLayout rowLayout = new RowLayout(SWT.HORIZONTAL);
+       rowLayout.marginLeft = 10;
        rowLayout.marginTop = 15;
        rowLayout.marginRight = 15;
        rowLayout.marginBottom = 25;
        rowLayout.spacing = 5;
-      
-       shell.setLayout(rowLayout);
         
+        shell.setLayout(rowLayout);
         Combo combo = new Combo (shell, SWT.DROP_DOWN);
         //task 1
         Text text = new Text(shell, SWT.BORDER);
         text.setText("");
-        //Lebel
-        final Label label = new Label(shell, SWT.NONE);
-        label.setText("");
-     
-      // Button 1
+        // Button 1
 final Button button = new Button(shell, SWT.NONE);
 button.setText("Add to combobox");
-       
-        MessageBox mb = new MessageBox(shell, SWT.ICON_ERROR | SWT.OK);
-           mb.setText("Error");
-           mb.setMessage("Already exists");
-        
-
-  button.addSelectionListener(new SelectionAdapter() {
- 
-            @Override
-            public void widgetSelected(SelectionEvent arg0) {
-                boolean exist =false;
-                String[] items = combo.getItems();
-                String s = text.getText();
-                 if (s == null || s.length()==0){
-                     return;
-                 }
-               for (String item : items){
-         if (item.equals(text.getText())){
-         MessageBox mb = new MessageBox(shell, SWT.ICON_ERROR | SWT.OK);
-           mb.setText("Error");
-           mb.setMessage("Already exists");
-         mb.open();
-         exist =true;
-         break;
-         }
-        }
-              if (exist==false) 
-                   combo.add(s);
-                 }
-        });
-  
- //task 2
+//task 2
  final Button button1 = new Button(shell, SWT.NONE);
 button1.setText("push to set text to button2");
  final Button button2 = new Button(shell, SWT.NONE);
  button2.setText("button2");
  
- 
-  
-        button1.addSelectionListener(new SelectionAdapter() {
-             @Override
-            public void widgetSelected(SelectionEvent arg0) {
-            button2.setText(text.getText());
-            }
-        });
-        
-        button2.addSelectionListener(new SelectionAdapter() {
-             @Override
-            public void widgetSelected(SelectionEvent arg0) {
-            String buffer = button1.getText();
-            button1.setText(button2.getText());
-            button2.setText(buffer);
-            }
-        });
-        
-        //task3
+  //task3
         // Group
         Composite radioGroup = new Composite (shell, SWT.NONE);
         radioGroup.setLayout(new RowLayout(SWT.HORIZONTAL));
@@ -128,6 +76,74 @@ button1.setText("push to set text to button2");
         final Button button3 = new Button (shell, SWT.NONE);
         button3.setText("Choose RadioButton");
         
+        //Task 4
+        final Button button4 = new Button(shell, SWT.NONE);
+button4.setText("Choose from combobox");
+
+//Task 5
+Table table = new Table(shell,SWT.BORDER|SWT.VIRTUAL); 
+table.setItemCount(2); 
+table.setHeaderVisible(true); 
+table.setLinesVisible(true);
+table.setSize(100, 100);
+TableColumn column = new TableColumn(table,SWT.BORDER); 
+column.setWidth(50);
+TableColumn column1 = new TableColumn(table,SWT.BORDER);
+column1.setWidth(50);
+final Button button5 = new Button(shell, SWT.NONE);
+button5.setText("Input to table");
+final Button button6 = new Button(shell, SWT.NONE);
+button6.setText("Drop to 2-d column");
+final Button button7 = new Button(shell, SWT.NONE);
+button7.setText("Back to 1-t column");
+
+button.addSelectionListener(new SelectionAdapter() {
+ 
+            @Override
+            public void widgetSelected(SelectionEvent arg0) {
+                boolean exist =false;
+                String[] items = combo.getItems();
+                String s = text.getText();
+                 if (s == null || s.length()==0){
+                     return;
+                 }
+               for (String item : items){
+         if (item.equals(text.getText())){
+          MessageBox mb = new MessageBox(shell, SWT.ICON_ERROR | SWT.OK);
+           mb.setText("Error 001");
+           mb.setMessage("Such element already exists.");
+        mb.open();
+         exist =true;
+         break;
+         }
+        }
+              if (exist==false) 
+                   combo.add(s);
+                 }
+        });
+  
+ 
+ 
+ 
+  
+        button1.addSelectionListener(new SelectionAdapter() {
+             @Override
+            public void widgetSelected(SelectionEvent arg0) {
+            button2.setText(text.getText());
+            }
+        });
+        
+        button2.addSelectionListener(new SelectionAdapter() {
+             @Override
+            public void widgetSelected(SelectionEvent arg0) {
+            String buffer = button1.getText();
+            button1.setText(button2.getText());
+            button2.setText(buffer);
+            }
+        });
+        
+       
+        
         Rbutton1.addSelectionListener(new SelectionAdapter()  {
  
             @Override
@@ -144,9 +160,7 @@ button1.setText("push to set text to button2");
              @Override
             public void widgetSelected(SelectionEvent arg0) {
                 String choice = text.getText();
-                MessageBox ErrorMs = new MessageBox(shell, SWT.ICON_ERROR | SWT.OK);
-           ErrorMs.setText("Error");
-           ErrorMs.setMessage("No such element!");
+                
          
                 if (choice.equals("1")) {
             Rbutton1.setSelection(true);
@@ -166,7 +180,12 @@ button1.setText("push to set text to button2");
                     Rbutton2.setSelection(false);
                     Rbutton3.setSelection(true);
                         }
-                        else ErrorMs.open();
+                        else  {
+    MessageBox ErrorMs = new MessageBox(shell, SWT.ICON_ERROR | SWT.OK);
+           ErrorMs.setText("Error 002");
+           ErrorMs.setMessage("No such element found.");
+            ErrorMs.open();
+                        }
                     }
                 }
             }
@@ -185,9 +204,7 @@ button1.setText("push to set text to button2");
              
         });
         
-        //Task 4
-        final Button button4 = new Button(shell, SWT.NONE);
-button4.setText("Choose from combobox");
+        
  button4.addSelectionListener(new SelectionAdapter() {
  
             @Override
@@ -207,23 +224,83 @@ button4.setText("Choose from combobox");
          else count++;
         }
               if (exist==false) {
-           MessageBox mb = new MessageBox(shell, SWT.ICON_ERROR | SWT.OK);
-           mb.setText("Error");
-           mb.setMessage("Such element does not exist!");
-         mb.open();
+    MessageBox ErrorMs = new MessageBox(shell, SWT.ICON_ERROR | SWT.OK);
+           ErrorMs.setText("Error 002");
+           ErrorMs.setMessage("No such element found.");
+            ErrorMs.open();
               }
               else combo.select(count);
                  }
         });
  
-        shell.setSize(350, 200);
+
+button5.addSelectionListener(new SelectionAdapter() {
+ 
+            @Override
+            public void widgetSelected(SelectionEvent arg0) {
+                column.setText(text.getText());
+            }
+        });
+button6.addSelectionListener(new SelectionAdapter() {
+ 
+            @Override
+            public void widgetSelected(SelectionEvent arg0) {
+                column1.setText(column.getText());
+                
+            }
+        });
+button7.addSelectionListener(new SelectionAdapter() {
+ 
+            @Override
+            public void widgetSelected(SelectionEvent arg0) {
+                column.setText(column1.getText());
+            }
+        });
+         int ShellWidth =350;
+int ShellHeight = 300;
+        shell.setSize(ShellWidth, ShellHeight);
         shell.open();
         while (!shell.isDisposed()) {
             if (!display.readAndDispatch())
                 display.sleep();
         }
         display.dispose();
+     
+      
+       
+       
+
+  
+
+
+
     }
+     /*  public void open(){
+           Display display =Display.getDefault();
+          Content();
+          shell.open();
+          shell.layout();
+          
+       }  */
+   /* public static void Error001(){//Elemet  exist
+        Display display = new Display();
+        Shell shell = new Shell(display);
+     MessageBox mb = new MessageBox(shell, SWT.ICON_ERROR | SWT.OK);
+           mb.setText("Error 001");
+           mb.setMessage("Such element already exists.");
+        mb.open();
+}*/
+   /* public static void Error002(){//Element not exist
+        Display display = new Display();
+        Shell shell = new Shell(display);
+    MessageBox ErrorMs = new MessageBox(shell, SWT.ICON_ERROR | SWT.OK);
+           ErrorMs.setText("Error 002");
+           ErrorMs.setMessage("No such element found.");
+            ErrorMs.open();
+    }*/
+    
+    public static void Content(){
         
+    }
         
     }
