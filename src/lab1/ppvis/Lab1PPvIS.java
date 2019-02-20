@@ -38,7 +38,7 @@ public class Lab1PPvIS {
        rowLayout.marginRight = 15;
        rowLayout.marginBottom = 25;
        rowLayout.spacing = 5;
-        
+        shell.setText("Laboratory work #1");
         shell.setLayout(rowLayout);
         Combo combo = new Combo (shell, SWT.DROP_DOWN);
         //task 1
@@ -78,11 +78,11 @@ button1.setText("push to set text to button2");
         
         //Task 4
         final Button button4 = new Button(shell, SWT.NONE);
-button4.setText("Choose from combobox");
+        button4.setText("Choose from combobox");
 
 //Task 5
 Table table = new Table(shell,SWT.BORDER|SWT.VIRTUAL); 
-table.setItemCount(2); 
+table.setItemCount(3); 
 table.setHeaderVisible(true); 
 table.setLinesVisible(true);
 table.setSize(100, 100);
@@ -141,21 +141,7 @@ button.addSelectionListener(new SelectionAdapter() {
             button2.setText(buffer);
             }
         });
-        
-       
-        
-        Rbutton1.addSelectionListener(new SelectionAdapter()  {
- 
-            @Override
-            public void widgetSelected(SelectionEvent e) {
-                Button source=  (Button) e.getSource();
-                 
-                if(source.getSelection())  {
-                    
-                }
-            }
-             
-        });
+
         button3.addSelectionListener(new SelectionAdapter() {
              @Override
             public void widgetSelected(SelectionEvent arg0) {
@@ -189,19 +175,6 @@ button.addSelectionListener(new SelectionAdapter() {
                     }
                 }
             }
-        });
-         
-        Rbutton2.addSelectionListener(new SelectionAdapter()  {
- 
-            @Override
-            public void widgetSelected(SelectionEvent e) {
-                Button source=  (Button) e.getSource();
-                 
-                if(source.getSelection())  {
-                   
-                }
-            }
-             
         });
         
         
@@ -265,42 +238,5 @@ int ShellHeight = 300;
                 display.sleep();
         }
         display.dispose();
-     
-      
-       
-       
-
-  
-
-
-
     }
-     /*  public void open(){
-           Display display =Display.getDefault();
-          Content();
-          shell.open();
-          shell.layout();
-          
-       }  */
-   /* public static void Error001(){//Elemet  exist
-        Display display = new Display();
-        Shell shell = new Shell(display);
-     MessageBox mb = new MessageBox(shell, SWT.ICON_ERROR | SWT.OK);
-           mb.setText("Error 001");
-           mb.setMessage("Such element already exists.");
-        mb.open();
-}*/
-   /* public static void Error002(){//Element not exist
-        Display display = new Display();
-        Shell shell = new Shell(display);
-    MessageBox ErrorMs = new MessageBox(shell, SWT.ICON_ERROR | SWT.OK);
-           ErrorMs.setText("Error 002");
-           ErrorMs.setMessage("No such element found.");
-            ErrorMs.open();
-    }*/
-    
-    public static void Content(){
-        
-    }
-        
     }
