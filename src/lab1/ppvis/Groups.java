@@ -33,13 +33,12 @@ import org.eclipse.swt.widgets.TableColumn;
  *
  * @author Asus
  */
+public class Groups extends WindowForm {
 
-public class Groups extends WindowForm{
-    public static void CreateGroup1(){
-        
+    public static void CreateGroup1() {
+
         final Button button = new Button(shell, SWT.NONE);
         button.setText("Add to combobox");
-
 
         button.addSelectionListener(new SelectionAdapter() {
 
@@ -53,7 +52,7 @@ public class Groups extends WindowForm{
                 }
                 for (String item : items) {
                     if (item.equals(text.getText())) {
-                        WindowForm.Error("001","Such element already exists");
+                        WindowForm.Error("001", "Such element already exists");
                         exist = true;
                         break;
                     }
@@ -63,8 +62,9 @@ public class Groups extends WindowForm{
                 }
             }
         });
-}
-    public static void CreateGroup2(){
+    }
+
+    public static void CreateGroup2() {
         final Button button1 = new Button(shell, SWT.NONE);
         button1.setText("push to set text to switch btn ");
 
@@ -81,18 +81,18 @@ public class Groups extends WindowForm{
         button2.addSelectionListener(new SelectionAdapter() {
             @Override
             public void widgetSelected(SelectionEvent arg0) {
-                String buffer = button1.getText(); 
+                String buffer = button1.getText();
                 button1.setText(button2.getText());
-                button2.setText(buffer);           
+                button2.setText(buffer);
             }
         });
     }
-    
-    public static void CreateGroup3(){
+
+    public static void CreateGroup3() {
 
         Composite radioGroup = new Composite(shell, SWT.NONE);
         radioGroup.setLayout(new RowLayout(SWT.HORIZONTAL));
- 
+
         Label radiolabel = new Label(radioGroup, SWT.NONE);
         radiolabel.setText("Select button: ");
 
@@ -104,12 +104,11 @@ public class Groups extends WindowForm{
 
         Button Rbutton3 = new Button(radioGroup, SWT.RADIO);
         Rbutton3.setText("3");
-        
 
         final Button button3 = new Button(shell, SWT.NONE);
         button3.setText("Choose RadioButton");
-        
-         button3.addSelectionListener(new SelectionAdapter() {
+
+        button3.addSelectionListener(new SelectionAdapter() {
             @Override
             public void widgetSelected(SelectionEvent arg0) {
                 String choice = text.getText();
@@ -123,15 +122,16 @@ public class Groups extends WindowForm{
                         if (choice.equals("3")) {
                             Rbutton3.setSelection(true);
                         } else {
-                           WindowForm.Error("Error 002","No such element found!");
+                            WindowForm.Error("Error 002", "No such element found!");
                         }
                     }
                 }
             }
         });
     }
-    public static void CreateGroup4(){
-         Composite checkBox = new Composite(shell, SWT.NONE);
+
+    public static void CreateGroup4() {
+        Composite checkBox = new Composite(shell, SWT.NONE);
         checkBox.setLayout(new RowLayout(SWT.HORIZONTAL));
 
         Label checkboxLabel = new Label(checkBox, SWT.NONE);
@@ -145,10 +145,10 @@ public class Groups extends WindowForm{
 
         Button check3 = new Button(checkBox, SWT.CHECK);
         check3.setText("3");
-        
+
         final Button checkBoxbutton = new Button(shell, SWT.NONE);
         checkBoxbutton.setText("Choose check");
- checkBoxbutton.addSelectionListener(new SelectionAdapter() {
+        checkBoxbutton.addSelectionListener(new SelectionAdapter() {
             @Override
             public void widgetSelected(SelectionEvent arg0) {
                 String choice = text.getText();
@@ -167,16 +167,15 @@ public class Groups extends WindowForm{
                             check2.setSelection(false);
                             check3.setSelection(true);
                         } else {
-                         WindowForm.Error("Error 002","No such element found.");
+                            WindowForm.Error("Error 002", "No such element found.");
                         }
                     }
                 }
-                     }
+            }
         });
     }
-    
-    public static void CreateGroup5()
-    {
+
+    public static void CreateGroup5() {
         final Button button4 = new Button(shell, SWT.NONE);
         button4.setText("Choose from combobox");
         button4.addSelectionListener(new SelectionAdapter() {
@@ -200,15 +199,15 @@ public class Groups extends WindowForm{
                 }
                 if (exist == false) {
                     //giving new information to error window  
-                 WindowForm.Error("Error 002", "No such element found.");
+                    WindowForm.Error("Error 002", "No such element found.");
                 } else {
                     combo.select(count);
                 }
             }
         });
     }
-    
-    public static void CreateGroup6(){
+
+    public static void CreateGroup6() {
 
         Table table = new Table(shell, SWT.BORDER | SWT.VIRTUAL);
         table.setItemCount(3);
@@ -221,7 +220,7 @@ public class Groups extends WindowForm{
 
         TableColumn column1 = new TableColumn(table, SWT.BORDER);
         column1.setWidth(50);
-        
+
         final Button button5 = new Button(shell, SWT.NONE);
         button5.setText("Input to table");
 
@@ -230,7 +229,7 @@ public class Groups extends WindowForm{
 
         final Button button7 = new Button(shell, SWT.NONE);
         button7.setText("Back to 1-t column");
-        
+
         button5.addSelectionListener(new SelectionAdapter() {
 
             @Override
@@ -243,18 +242,26 @@ public class Groups extends WindowForm{
 
             @Override
             public void widgetSelected(SelectionEvent arg0) {
-                String empty= "";
-                if (column.getText().equals(empty)) {return;}
-                else {column1.setText(column.getText()); column.setText("");}
+                String empty = "";
+                if (column.getText().equals(empty)) {
+                    return;
+                } else {
+                    column1.setText(column.getText());
+                    column.setText("");
+                }
             }
         });
         button7.addSelectionListener(new SelectionAdapter() {
 
             @Override
             public void widgetSelected(SelectionEvent arg0) {
-                String empty= "";
-                if (column1.getText().equals(empty)) {return;}
-                else {column.setText(column1.getText()); column1.setText("");}
+                String empty = "";
+                if (column1.getText().equals(empty)) {
+                    return;
+                } else {
+                    column.setText(column1.getText());
+                    column1.setText("");
+                }
             }
         });
     }

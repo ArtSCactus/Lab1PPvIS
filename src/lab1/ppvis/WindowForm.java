@@ -48,7 +48,8 @@ public class WindowForm {
         shell.setText("LB #1");
         shell.setLayout(rowLayout);
     }
-    public void WindowOpen(){
+
+    public void WindowOpen() {
         int ShellWidth = 350;
         int ShellHeight = 350;
         shell.setSize(ShellWidth, ShellHeight);
