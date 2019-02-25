@@ -16,15 +16,18 @@
  *
  ****************************************************************************** */
 package lab1.ppvis;
+
 /**
  *
  * @author Artsiom Suruntovich
  */
 
 public class Lab1PPvIS extends WindowForm {
+    
     /**
      * @param args the command line arguments
      */
+    
     public static void main(String[] args) {
        WindowForm WF = new WindowForm();
        WF.WindowConfig();

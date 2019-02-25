@@ -1,5 +1,5 @@
 /*
- * Copyright (C) 2019 Asus
+ * Copyright (C) 2019 BSUIR
  *
  * This program is free software; you can redistribute it and/or
  * modify it under the terms of the GNU General Public License
@@ -31,7 +31,7 @@ import org.eclipse.swt.widgets.TableColumn;
 
 /**
  *
- * @author Asus
+ * @author Artsiom Suruntovich
  */
 public class Groups extends WindowForm {
 
@@ -52,7 +52,7 @@ public class Groups extends WindowForm {
                 }
                 for (String item : items) {
                     if (item.equals(text.getText())) {
-                        WindowForm.Error("001", "Such element already exists");
+                        WindowForm.Error("Error 001", "Such element already exists");
                         exist = true;
                         break;
                     }
@@ -198,7 +198,6 @@ public class Groups extends WindowForm {
                     }
                 }
                 if (exist == false) {
-                    //giving new information to error window  
                     WindowForm.Error("Error 002", "No such element found.");
                 } else {
                     combo.select(count);
@@ -234,8 +233,7 @@ public class Groups extends WindowForm {
 
             @Override
             public void widgetSelected(SelectionEvent arg0) {
-                column.setText(text.getText());// writing text to column from 
-                //text line
+                column.setText(text.getText());
             }
         });
         button6.addSelectionListener(new SelectionAdapter() {

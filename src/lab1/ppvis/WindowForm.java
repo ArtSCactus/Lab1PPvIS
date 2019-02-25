@@ -1,5 +1,5 @@
 /*
- * Copyright (C) 2019 Asus
+ * Copyright (C) 2019 BSUIR
  *
  * This program is free software; you can redistribute it and/or
  * modify it under the terms of the GNU General Public License
@@ -27,7 +27,7 @@ import org.eclipse.swt.widgets.Text;
 
 /**
  *
- * @author Asus
+ * @author Artsiom Suruntovich
  */
 public class WindowForm {
 
@@ -38,8 +38,6 @@ public class WindowForm {
     public static Combo combo = new Combo(shell, SWT.DROP_DOWN);
 
     public void WindowConfig() {
-        // Display display = new Display();
-
         rowLayout.marginLeft = 10;
         rowLayout.marginTop = 15;
         rowLayout.marginRight = 15;
