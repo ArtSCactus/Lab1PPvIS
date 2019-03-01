@@ -22,7 +22,7 @@ package lab1.ppvis;
  * @author Artsiom Suruntovich
  */
 
-public class Lab1PPvIS extends WindowForm {
+public class Lab1PPvIS {
     
     /**
      * @param args the command line arguments

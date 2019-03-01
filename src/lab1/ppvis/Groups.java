@@ -19,6 +19,7 @@ package lab1.ppvis;
 
 import static lab1.ppvis.WindowForm.shell;
 import static lab1.ppvis.WindowForm.text;
+import static lab1.ppvis.WindowForm.combo;
 import org.eclipse.swt.SWT;
 import org.eclipse.swt.events.SelectionAdapter;
 import org.eclipse.swt.events.SelectionEvent;
@@ -33,7 +34,7 @@ import org.eclipse.swt.widgets.TableColumn;
  *
  * @author Artsiom Suruntovich
  */
-public class Groups extends WindowForm {
+public class Groups {
 
     public static void CreateGroup1() {
 
