@@ -52,7 +52,7 @@ public class Groups {
                     return;
                 }
                 for (String item : items) {
-                    if (item.equals(text.getText())) {
+                    if (item.contains(text.getText())==true) {
                         WindowForm.Error("Error 001", "Such element already exists");
                         exist = true;
                         break;
@@ -116,11 +116,17 @@ public class Groups {
 
                 if (choice.equals("1")) {
                     Rbutton1.setSelection(true);
+                    Rbutton2.setSelection(false);
+                     Rbutton3.setSelection(false);
                 } else {
                     if (choice.equals("2")) {
                         Rbutton2.setSelection(true);
+                         Rbutton1.setSelection(false);
+                            Rbutton3.setSelection(false);
                     } else {
                         if (choice.equals("3")) {
+                            Rbutton1.setSelection(false);
+                            Rbutton2.setSelection(false);
                             Rbutton3.setSelection(true);
                         } else {
                             WindowForm.Error("Error 002", "No such element found!");
@@ -154,19 +160,17 @@ public class Groups {
             public void widgetSelected(SelectionEvent arg0) {
                 String choice = text.getText();
                 if (choice.equals("1")) {
-                    check1.setSelection(true);
-                    check2.setSelection(false);
-                    check3.setSelection(false);
+                    if(check1.getSelection()==true) check1.setSelection(false);
+                    else check1.setSelection(true);
+                 
                 } else {
                     if (choice.equals("2")) {
-                        check1.setSelection(false);
-                        check2.setSelection(true);
-                        check3.setSelection(false);
+                        if(check2.getSelection()==true) check2.setSelection(false);
+                    else check2.setSelection(true);
                     } else {
                         if (choice.equals("3")) {
-                            check1.setSelection(false);
-                            check2.setSelection(false);
-                            check3.setSelection(true);
+                             if(check3.getSelection()==true) check3.setSelection(false);
+                    else check3.setSelection(true);
                         } else {
                             WindowForm.Error("Error 002", "No such element found.");
                         }
