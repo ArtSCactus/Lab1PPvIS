@@ -30,13 +30,9 @@ public class Lab1PPvIS {
     
     public static void main(String[] args) {
        WindowForm WF = new WindowForm();
-       WF.WindowConfig();
-       Groups.CreateGroup1();
-       Groups.CreateGroup2();
-       Groups.CreateGroup3();
-       Groups.CreateGroup4();
-       Groups.CreateGroup5();
-       Groups.CreateGroup6();
-       WF.WindowOpen();  
+       Groups.CoordinatesForGlobalElements();
+      //WF.WindowConfig();
+Groups.LoadUI();
+       WF.WindowOpen(400, 470);  
     }
 }

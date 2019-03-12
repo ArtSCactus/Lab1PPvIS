@@ -36,10 +36,15 @@ import org.eclipse.swt.widgets.TableColumn;
  */
 public class Groups {
 
-    public static void CreateGroup1() {
+     public static void CoordinatesForGlobalElements(){
+    text.setBounds(0, 0, 110, 23);
+    combo.setBounds(110, 0, 110, 30);
+    }
+    public static void LoadUI() {
 
         final Button button = new Button(shell, SWT.NONE);
         button.setText("Add to combobox");
+        button.setBounds(225, 0, 110, 30);
 
         button.addSelectionListener(new SelectionAdapter() {
 
@@ -63,14 +68,14 @@ public class Groups {
                 }
             }
         });
-    }
-
-    public static void CreateGroup2() {
+   //Group 2
         final Button button1 = new Button(shell, SWT.NONE);
         button1.setText("push to set text to switch btn ");
+        button1.setBounds(0, 30, 210, 40);
 
         final Button button2 = new Button(shell, SWT.NONE);
         button2.setText("switch text");
+        button2.setBounds(215, 30, 110, 40);
 
         button1.addSelectionListener(new SelectionAdapter() {
             @Override
@@ -87,28 +92,26 @@ public class Groups {
                 button2.setText(buffer);
             }
         });
-    }
-
-    public static void CreateGroup3() {
-
+   
+   //Group 3     
         Composite radioGroup = new Composite(shell, SWT.NONE);
         radioGroup.setLayout(new RowLayout(SWT.HORIZONTAL));
-
+ radioGroup.setBounds(0,80, 210, 35);
         Label radiolabel = new Label(radioGroup, SWT.NONE);
-        radiolabel.setText("Select button: ");
-
+        radiolabel.setText("Select radio button: ");
+       radiolabel.setBounds(0,0, 110, 50);
         Button Rbutton1 = new Button(radioGroup, SWT.RADIO);
         Rbutton1.setText("1");
-
+        Rbutton1.setBounds(120,0, 30, 30);
         Button Rbutton2 = new Button(radioGroup, SWT.RADIO);
         Rbutton2.setText("2");
-
+        Rbutton2.setBounds(150,0, 30, 30);
         Button Rbutton3 = new Button(radioGroup, SWT.RADIO);
         Rbutton3.setText("3");
-
+        Rbutton3.setBounds(180,0, 30, 30);
         final Button button3 = new Button(shell, SWT.NONE);
         button3.setText("Choose RadioButton");
-
+button3.setBounds(220,75, 150, 30);
         button3.addSelectionListener(new SelectionAdapter() {
             @Override
             public void widgetSelected(SelectionEvent arg0) {
@@ -135,26 +138,26 @@ public class Groups {
                 }
             }
         });
-    }
-
-    public static void CreateGroup4() {
+   //Group 4
         Composite checkBox = new Composite(shell, SWT.NONE);
         checkBox.setLayout(new RowLayout(SWT.HORIZONTAL));
+               checkBox.setBounds(0,110, 210, 35);
 
         Label checkboxLabel = new Label(checkBox, SWT.NONE);
-        checkboxLabel.setText("Select check button");
-
+        checkboxLabel.setText("Select check button:");
+       checkboxLabel.setBounds(0,0, 110, 50);
         Button check1 = new Button(checkBox, SWT.CHECK);
         check1.setText("1");
-
+check1.setBounds(120,0, 30, 30);
         Button check2 = new Button(checkBox, SWT.CHECK);
         check2.setText("2");
-
+check2.setBounds(150,0, 30, 30);
         Button check3 = new Button(checkBox, SWT.CHECK);
         check3.setText("3");
-
+check3.setBounds(180,0, 30, 30);
         final Button checkBoxbutton = new Button(shell, SWT.NONE);
         checkBoxbutton.setText("Choose check");
+        checkBoxbutton.setBounds(220,105, 100, 30);
         checkBoxbutton.addSelectionListener(new SelectionAdapter() {
             @Override
             public void widgetSelected(SelectionEvent arg0) {
@@ -178,11 +181,10 @@ public class Groups {
                 }
             }
         });
-    }
-
-    public static void CreateGroup5() {
+   //Group 5
         final Button button4 = new Button(shell, SWT.NONE);
         button4.setText("Choose from combobox");
+       button4.setBounds(0,145, 140, 30);
         button4.addSelectionListener(new SelectionAdapter() {
 
             @Override
@@ -209,31 +211,30 @@ public class Groups {
                 }
             }
         });
-    }
-
-    public static void CreateGroup6() {
+   //Group 6
 
         Table table = new Table(shell, SWT.BORDER | SWT.VIRTUAL);
         table.setItemCount(3);
         table.setHeaderVisible(true);
         table.setLinesVisible(true);
         table.setSize(100, 100);
-
+        table.setBounds(100, 180, 150, 150);
+        
         TableColumn column = new TableColumn(table, SWT.BORDER);
-        column.setWidth(50);
+        column.setWidth(60);
 
         TableColumn column1 = new TableColumn(table, SWT.BORDER);
-        column1.setWidth(50);
+        column1.setWidth(60);
 
         final Button button5 = new Button(shell, SWT.NONE);
         button5.setText("Input to table");
-
+button5.setBounds(0, 350, 110, 30);
         final Button button6 = new Button(shell, SWT.NONE);
         button6.setText("Drop to 2-d column");
-
+button6.setBounds(110, 350, 110, 30);
         final Button button7 = new Button(shell, SWT.NONE);
         button7.setText("Back to 1-t column");
-
+button7.setBounds(210, 350, 130, 30);
         button5.addSelectionListener(new SelectionAdapter() {
 
             @Override
@@ -266,6 +267,17 @@ public class Groups {
                     column1.setText("");
                 }
             }
+            
+        });
+         final Button StartButton = new Button(shell, SWT.NONE);
+        StartButton.setText("Start");
+StartButton.setBounds(30, 390, 130, 30);
+        StartButton.addSelectionListener(new SelectionAdapter() {
+
+            @Override
+            public void widgetSelected(SelectionEvent arg0) {
+                column.setText(text.getText());
+            }
         });
     }
-}
+    }

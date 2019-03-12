@@ -37,19 +37,17 @@ public class WindowForm {
     public static Text text = new Text(shell, SWT.BORDER);
     public static Combo combo = new Combo(shell, SWT.DROP_DOWN);
 
-    public void WindowConfig() {
-        rowLayout.marginLeft = 10;
-        rowLayout.marginTop = 15;
-        rowLayout.marginRight = 15;
-        rowLayout.marginBottom = 25;
-        rowLayout.spacing = 5;
-        shell.setText("LB #1");
-        shell.setLayout(rowLayout);
+     public void WindowConfig() {
+    rowLayout.marginLeft = 10;
+    rowLayout.marginTop = 15;
+    rowLayout.marginRight = 15;
+    rowLayout.marginBottom = 25;
+    rowLayout.spacing = 5;
+    shell.setText("LB #1");
+    shell.setLayout(rowLayout);
     }
 
-    public void WindowOpen() {
-        int ShellWidth = 350;
-        int ShellHeight = 350;
+    public void WindowOpen(int ShellWidth,int ShellHeight) { 
         shell.setSize(ShellWidth, ShellHeight);
         shell.open();
         while (!shell.isDisposed()) {
