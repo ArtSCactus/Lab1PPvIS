@@ -21,18 +21,15 @@ package lab1.ppvis;
  *
  * @author Artsiom Suruntovich
  */
-
 public class Lab1PPvIS {
-    
+
     /**
      * @param args the command line arguments
      */
-    
     public static void main(String[] args) {
-       WindowForm WF = new WindowForm();
-       Groups.CoordinatesForGlobalElements();
-      //WF.WindowConfig();
-Groups.LoadUI();
-       WF.WindowOpen(400, 470);  
+        WindowForm WF = new WindowForm();
+        WF.WindowConfig();
+        Groups.LoadUI();
+        WF.WindowOpen(400, 470);
     }
 }
