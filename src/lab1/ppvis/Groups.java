@@ -17,6 +17,8 @@
  ****************************************************************************** */
 package lab1.ppvis;
 
+import java.util.logging.Level;
+import java.util.logging.Logger;
 import static lab1.ppvis.WindowForm.combo;
 import static lab1.ppvis.WindowForm.display;
 import static lab1.ppvis.WindowForm.shell;
@@ -61,41 +63,105 @@ public class Groups {
     public static Button button7 = new Button(shell, SWT.NONE);
     public static Button StartButton = new Button(shell, SWT.NONE);
     public static Button StopButton = new Button(shell, SWT.NONE);
-
+    
+    
     public static Thread createThread2(Display display) {
         return new Thread(() -> {
             while (!Thread.currentThread().isInterrupted()) {
                 while (TaskNotDone == true) {
-                    display.syncExec(() -> {
                         try {
+                            display.syncExec(() -> {
                             WindowForm.SwapButtonsWithText(button7, text);
-                            Thread.sleep(250);
+                                try {
+                                    Thread.sleep(500);
+                                } catch (InterruptedException ex) {
+                                    Logger.getLogger(Groups.class.getName()).log(Level.SEVERE, null, ex);
+                                }
+                             });
+                            if (TaskNotDone!=true) break;
+                             display.syncExec(() -> {
                             WindowForm.SwapButtonsWithCombo(button6, combo);
-                            Thread.sleep(250);
+                                try {
+                                    Thread.sleep(500);
+                                } catch (InterruptedException ex) {
+                                    Logger.getLogger(Groups.class.getName()).log(Level.SEVERE, null, ex);
+                                }
+                              });
+                            if (TaskNotDone!=true) break;
+                             display.syncExec(() -> {
                             WindowForm.SwapButtons(button, button5);
-                            Thread.sleep(250);
+                                try {
+                                    Thread.sleep(500);
+                                } catch (InterruptedException ex) {
+                                    Logger.getLogger(Groups.class.getName()).log(Level.SEVERE, null, ex);
+                                }
+                             });
+                            if (TaskNotDone!=true) break;
+                             display.syncExec(() -> {
                             WindowForm.SwapButtonsWithTable(button1, table);
-                            Thread.sleep(250);
+                                try {
+                                    Thread.sleep(500);
+                                } catch (InterruptedException ex) {
+                                    Logger.getLogger(Groups.class.getName()).log(Level.SEVERE, null, ex);
+                                }
+                              });
+                            if (TaskNotDone!=true) break;
+                              display.syncExec(() -> {
                             WindowForm.SwapButtons(button2, button4);
-                            Thread.sleep(250);
+                                try {
+                                    Thread.sleep(500);
+                                } catch (InterruptedException ex) {
+                                    Logger.getLogger(Groups.class.getName()).log(Level.SEVERE, null, ex);
+                                }
+                               });
+                            if (TaskNotDone!=true) break;
+                                     display.syncExec(() -> {
                             WindowForm.SwapButtons(button2, button4);
-                            Thread.sleep(250);
+                                try {
+                                    Thread.sleep(500);
+                                } catch (InterruptedException ex) {
+                                    Logger.getLogger(Groups.class.getName()).log(Level.SEVERE, null, ex);
+                                }
+                             });
+                            if (TaskNotDone!=true) break;
+                              display.syncExec(() -> {
                             WindowForm.SwapButtonsWithComposite(checkBoxbutton, radioGroup);
-                            Thread.sleep(250);
+                                try {
+                                    Thread.sleep(500);
+                                } catch (InterruptedException ex) {
+                                    Logger.getLogger(Groups.class.getName()).log(Level.SEVERE, null, ex);
+                                }
+                             });
+                            if (TaskNotDone!=true) break;
+                            display.syncExec(() -> {
                             WindowForm.SwapButtons(button2, button4);
-                            Thread.sleep(250);
+                                try {
+                                    Thread.sleep(500);
+                                } catch (InterruptedException ex) {
+                                    Logger.getLogger(Groups.class.getName()).log(Level.SEVERE, null, ex);
+                                }
+                            });
+                            if (TaskNotDone!=true) break;
+                             display.syncExec(() -> {
                             WindowForm.SwapButtonsWithComposite(button3, checkBox);
-                            Thread.sleep(100);
+                                try {
+                                    Thread.sleep(100);
+                                } catch (InterruptedException ex) {
+                                    Logger.getLogger(Groups.class.getName()).log(Level.SEVERE, null, ex);
+                                }
+                             });
+                            if (TaskNotDone!=true) break;
+                             Thread.sleep(100);
                         } catch (InterruptedException e) {
                             e.printStackTrace();
                         }
-                    });
                 }
             }
         });
     }
 
     public static void LoadUI() {
+        
         text.setBounds(0, 0, 110, 23);
         combo.setBounds(110, 0, 110, 30);
 
@@ -337,15 +403,16 @@ public class Groups {
             public void widgetSelected(SelectionEvent arg0) {
                 TaskNotDone = true;
                 Thread thread1 = createThread2(display);
+                thread1.setDaemon(true);
                 thread1.start();
             }
-
         });
         StopButton.addSelectionListener(new SelectionAdapter() {
 
             @Override
             public void widgetSelected(SelectionEvent arg0) {
                 TaskNotDone = false;
+
             }
 
         });
